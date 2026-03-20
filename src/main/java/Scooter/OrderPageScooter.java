@@ -22,6 +22,8 @@ public class OrderPageScooter {
     private By phoneField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
     // Кнопка Далее
     private By furtherButton = By.xpath("//button[contains(text(),'Далее')]");
+    // Заголовок Для кого самокат
+    private By orderHeader = By.className("Order_Header__BZXOb");
     // Ошибка под полем имя
     private By nameError = By.xpath("//input[@placeholder='* Имя']/following-sibling::div");
     // Ошибка под полем фамилия
@@ -68,6 +70,12 @@ public class OrderPageScooter {
     public void clickFurtherButton() {
 
         driver.findElement(furtherButton).click();
+    }
+
+    public String getOrderHeader() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOfElementLocated(orderHeader));
+       return driver.findElement(orderHeader).getText();
     }
 
     public void fillOrderForm(String username, String surname, String address, String stationName, String phone) {

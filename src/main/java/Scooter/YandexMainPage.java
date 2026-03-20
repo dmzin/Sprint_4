@@ -15,6 +15,9 @@ public class YandexMainPage {
         this.driver = driver;
     }
 
+    // Логотип Дзена
+    private By logoDzen = By.xpath("//div[@class='dzen-layout--desktop-base-header__logoContainer-pu dzen-layout--desktop-base-header__isMorda-2n']");
+
     public void saveCurrentWindow(){
         originalWindow = driver.getWindowHandle();
     }
@@ -35,7 +38,7 @@ public class YandexMainPage {
 
     public void waitForLoadYandexPage(){
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='dzen-layout--desktop-base-header__logoContainer-pu dzen-layout--desktop-base-header__isMorda-2n']")));
+                .until(ExpectedConditions.visibilityOfElementLocated(logoDzen));
     }
 
     public String getUrl(){

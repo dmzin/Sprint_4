@@ -32,6 +32,8 @@ public class MainPageScooter {
     private By inputOrderNumberField = By.xpath("//input[@placeholder='Введите номер заказа']");
     // Кнопка Go!
     private By goButton = By.xpath("//button[contains(text(),'Go!')]");
+    // Главная страница Яндекс Самоката
+    private By scooterMainPage = By.className("Home_HomePage__ZXKIX");
     // Картинка такого заказа нет
     private By noOrderPicture = By.xpath("//img[@alt='Not found']");
 
@@ -86,7 +88,7 @@ public class MainPageScooter {
 
     public void waitForLoadHomePage(){
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.className("Home_HomePage__ZXKIX")));
+                .until(ExpectedConditions.visibilityOfElementLocated(scooterMainPage));
     }
 
     public String getUrl(){
@@ -114,7 +116,7 @@ public class MainPageScooter {
 
     public void waitForLoadErrorOrderPage(){
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='Not found']")));
+                .until(ExpectedConditions.visibilityOfElementLocated(noOrderPicture));
     }
 
     public WebElement getNoOrderPicture() {

@@ -6,10 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static Scooter.Urls.BASE_URL;
+
 
 public class BaseTest {
     WebDriver driver;
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru/";
     MainPageScooter objMainPage;
     OrderPageScooter objOrderPage;
     RentPageScooter objRentPage;
@@ -39,11 +40,13 @@ public class BaseTest {
     public void startBrowserChrome() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     public void startBrowserFirefox() {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
+        driver.manage().window().maximize();
     }
 
     @After
